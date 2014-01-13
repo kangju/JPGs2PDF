@@ -53,7 +53,12 @@ end
 
 fpath = ARGV.pop
 
-if !File.directory? fpath then
+if(fpath == nil) then 
+	puts "plz input target path"
+	exit 1
+end
+
+if !File.directory?(fpath) then
 	puts "input path is not directory."
 	exit 1
 end
