@@ -1,4 +1,5 @@
-# coding:utf-8
+#!ruby
+#coding: utf-8
 
 require 'prawn'
 
@@ -34,7 +35,7 @@ def createPdf(targetFolderName)
 
 		Prawn::Document.generate(OUTPUTFOLDER+outfilename) do
 			imgs.each do |img|
-				start_new_page if(!firstpage)
+				start_new_page unless firstpage
 				image(img,
 				 :at => [-1*bounds.absolute_left, bounds.absolute_top],
 				 :fit => [bounds.absolute_right+bounds.absolute_left, bounds.absolute_top+bounds.absolute_bottom])
