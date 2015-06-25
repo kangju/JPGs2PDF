@@ -14,7 +14,8 @@ module Jpgs2Pdf
             imgs.each do |img|
                start_new_page unless firstpage
                image(img,
-                :at => [-1*bounds.absolute_left, bounds.absolute_top],
+                :vposition => :center,
+                :position => :center,
                 :fit => [bounds.absolute_right+bounds.absolute_left, bounds.absolute_top+bounds.absolute_bottom])
                firstpage = false
             end
