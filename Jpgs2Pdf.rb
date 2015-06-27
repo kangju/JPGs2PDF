@@ -4,20 +4,17 @@ module Jpgs2Pdf
    class Jpgs2Pdf
       def Jpgs2Pdf.toPdf(targetFolderName,outputPdfFilePath)
          searchtext = "#{targetFolderName}/*.jpg"
-         firstpage = true
 
          imgs = Dir.glob(searchtext).sort!
 
          return false if imgs.empty?
 
-         Prawn::Document.generate(outputPdfFilePath) do
+         Prawn::Document.generate(outputPdfFilePath,:margin => [0,0]) do
             imgs.each do |img|
-               start_new_page unless firstpage
                image(img,
                 :vposition => :center,
                 :position => :center,
-                :fit => [bounds.absolute_right+bounds.absolute_left, bounds.absolute_top+bounds.absolute_bottom])
-               firstpage = false
+                :fit => [bounds.right+bounds.absolute_left - 1, bounds.absolute_top+bounds.absolute_bottom - 1])
             end
          end
 
